@@ -1,0 +1,142 @@
+{% extends "layout.twig.html" %} {% set title_ = "Add User" %}
+{% block head %}{% endblock %}
+{% block content %}
+<div class="page-title">
+    <div class="title_left">
+        <h3>Add User</h3>
+    </div>
+
+    <div class="title_right"></div>
+
+</div>
+
+<div class="clearfix"></div>
+{% if success is defined %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Status!</strong> {{success}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %} {% for messages in flash.getMessage('error') %}
+<div class="alert-danger mb-2" role="alert">
+    {{ messages }}
+</div>
+{% endfor %}
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <form class="form-horizontal form-label-left" method="post">
+                
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fname">First Name <span class="required">*</span></label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="1" name="fname" placeholder="Enter First Name" required="required" type="text">
+                      
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mname">Middle Name</label>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" class="form-control col-md-7 col-xs-12" id="mname" name="mname" placeholder="Enter Middle Name">
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="lname">Last Name <span class="required">*</span></label>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" class="form-control col-md-7 col-xs-12" id="lname" name="lname" placeholder="Enter Last Name" required="required">
+                    </div>
+                </div>
+
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="username">Username<span class="required">*</span></label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="username" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="1" name="username" placeholder="Enter username" required="required" type="text">
+                        <span class="invalid-feedback text-danger">{{username_err}}</span>
+                    </div>
+                </div>
+
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="lname">Password <span class="required">*</span></label>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="password" class="form-control col-md-7 col-xs-12 <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>" id="password" name="password" placeholder="Enter Password" required="required">
+                        <span class="invalid-feedback">{{password_err}}</span>
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12 " for="lname">Confirm Password <span class="required">*</span></label>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="password" class="form-control col-md-7 col-xs-12 <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" id="confirm_password" name="confirm_password" placeholder="Enter Password" required="required">
+                        <span class="invalid-feedback">{{confirm_password_err}}</span>
+                    </div>
+                </div>
+
+                        
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="account_type">Account Type</label>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div id="account_type" class="btn-group" data-toggle="buttons">
+
+                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                <input type="radio" name="account_type" value="normal" required="required"> &nbsp; Normal &nbsp;
+                            </label>
+                            
+                            <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                <input type="radio" name="account_type" value="admin" required="required"> Admin
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            
+                
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="address">User Type</label>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select class="form-control col-md-7 col-xs-12" id="user_type" name="user_type"  required="required">
+                            <option value="normal">Normal user</option>
+                            <option value="social">Social worker</option>
+                            <option value="police">Police </option>
+                            <option value="admin">Administrator</option>
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pob">Select Place of Birth</label>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select class="form-control col-md-7 col-xs-12" id="pob" name="pob">
+                        {% for cn in countries %}
+                            <option value="{{cn.country_code}}-{{cn.country_name}}">{{cn.country_name}}</option>								
+                        {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phoneno">Contact Number</label>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" class="form-control col-md-7 col-xs-12" id="phoneno" name="phoneno" placeholder="Enter Contact Number"  data-inputmask="'mask' : '(999) 999-9999'" >
+                    </div>
+                </div>
+            
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="employer">Employer</label>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" class="form-control col-md-7 col-xs-12" id="employer" name="employer" placeholder="Enter Employer">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-md-6 col-md-offset-3">
+                        <button type="submit" name="submit" class="btn btn-success">Insert</button>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+
+    </div>
+</div>
+</div>
+
+{% endblock %}

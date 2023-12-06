@@ -1,0 +1,58 @@
+{
+    "name": "clem44/slim-starterkit",
+    "description": "Slim 4 Starter kit App",
+    "keywords": [
+        "slim", "slim framework", "psr7"
+    ],
+    "homepage": "http://github.com/clem44/slim-starterkit/",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Clemaurde Gumbs",
+            "email": "clemaurde.gumbs@gov.ai",
+            "homepage": "https://clemgumbs.com"
+        }
+    ],
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "autoload": {
+        "files": [
+            "./src/Helpers/helpers.php"
+        ],
+        "psr-4": {
+            "App\\": "src",
+            "Controllers\\": "src/Controllers/",
+            "Models\\": "src/Models/",
+            "Resources\\": "src/Resources/"
+        }
+    },
+    "require": {
+        "illuminate/database": "^8",
+        "illuminate/events": "^8",
+        "illuminate/support": "^8",
+        "illuminate/validation": "^8",
+        "intervention/image": "^2.7",
+        "monolog/monolog": "^2.3",
+        "php-di/php-di": "^6.3",
+        "slim/psr7": "^1.4",
+        "slim/slim": "^4.8",
+        "php-di/slim-bridge": "^3.2",
+        "phpmailer/phpmailer": "^6.6",
+        "robmorgan/phinx": "^0.12.10",
+        "slim/csrf": "^1.2",
+        "slim/flash": "^0.4.0",      
+        "slim/twig-view": "^3.3",
+        "symfony/var-dumper": "^5.4",
+        "twig/extra-bundle": "^3.4",
+        "twig/string-extra": "^3.4",
+        "twig/twig": "^3.3",
+        "vlucas/valitron": "^1.4"
+    }
+    ,
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    }
+}
