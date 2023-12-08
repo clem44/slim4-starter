@@ -9,7 +9,7 @@ It also includes Twig, CSRF, and Illumination Database Engine.
 
 To create a new project :
 
-    $ composer create-project clem44/slim4-starter my-new-project
+    $ composer create-project clem44/slim-starterkit [my-new-project]
     $ cd my-new-project
 
 Test using the PHP built-in server:
