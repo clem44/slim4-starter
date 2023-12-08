@@ -30,6 +30,7 @@
         }
     },
     "require": {
+        "php": ">=7.2",
         "illuminate/database": "^8",
         "illuminate/events": "^8",
         "illuminate/support": "^8",
