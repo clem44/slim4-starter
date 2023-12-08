@@ -16,7 +16,8 @@ Test using the PHP built-in server:
 
     php -S 0.0.0.0:8888 -t public/
 
-Make sure to set the basepath in boostrap/application.php 
-    $app->setBasePath(" ")
+Make sure to set the basepath in boostrap/application.php :
+    
+    $ app->setBasePath(" ")
  
 Navigate to http://localhost:8888
