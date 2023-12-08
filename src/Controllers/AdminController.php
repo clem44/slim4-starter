@@ -19,11 +19,8 @@ class AdminController extends BaseController
     {
 
         // $users = $this->db->table("users")->get();    
-        $users = User::all();
-        $victims = Victim::count();
-        $victimupdates = VictimUpdate::orderByDesc('date')->take(8)->get();
-        $suspects = Suspect::count();
-        return $this->view($response, 'home/' . 'index.twig.html',compact('victimupdates','users',"victims","suspects","applications"));
+        $users = User::all();      
+        return $this->view($response, 'home/' . 'index.twig.html',compact('users'));
     }
 
     public function show($request, $response, $id)
