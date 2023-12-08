@@ -1,7 +1,6 @@
 {
     "name": "clem44/slim-starterkit",
     "description": "Slim 4 Starter kit App",
-    "version": "1.0.0"
     "keywords": [
         "slim", "slim framework", "psr7"
     ],
