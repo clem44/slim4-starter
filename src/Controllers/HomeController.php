@@ -32,14 +32,8 @@ class HomeController extends BaseController
     {
         // $this->logger->info('Home page controller dispatched');
         //$name = $request->getAttribute('name', 'world');
-        $categories = Category::orderByDesc('title')->take(8)->get();
-        $news = Post::orderByDesc('title')->take(4)->get();
-
-        //$navservices = Service::all();
-        $products = Product::take(4)->get();
-        $stamps = Stamp::take(4)->get();
-        $services = Service::where('featured',1)->take(4)->get();
-        return $this->twig->render($response, 'home/' . 'index.html.twig',compact('categories','services','news','products','stamps'));
+      
+        return $this->twig->render($response, 'home/' . 'index.html.twig');
     }
 
     public function show($request, $response, $name)
