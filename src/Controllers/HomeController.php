@@ -33,7 +33,7 @@ class HomeController extends BaseController
         // $this->logger->info('Home page controller dispatched');
         //$name = $request->getAttribute('name', 'world');
       
-        return $this->twig->render($response, 'home/' . 'index.html.twig');
+        return $this->twig->render($response, 'home/' . 'index.twig.html');
     }
 
     public function show($request, $response, $name)
