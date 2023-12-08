@@ -18,6 +18,9 @@ return function (App $app) {
         echo phpinfo();
     });
 
+    $app->get('/', [HomeController::class, 'index'])->setName('home');
+    $app->get('/home/{name}', [HomeController::class, 'show'])->setName('home_show');
+
     //AUTH
     $app->get('/login', [AuthController::class, 'login'])->setName('login');
     $app->get('/register', AuthController::class . ':register')->setName('register.index');
@@ -26,7 +29,7 @@ return function (App $app) {
 
     $app->group('', function ($app) {
 
-        $app->get('/', AdminController::class . ':index')->setName('admin.home');
+        $app->get('/admin', AdminController::class . ':index')->setName('admin.home');
         $app->get('/home', [AdminController::class, 'index'])->setName('admin');      
         $app->post('/logout', AdminController::class . ':logout')->setName('logout');
         $app->get('/settings', [AdminController::class, 'settings'])->setName('settings');
