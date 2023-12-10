@@ -8,7 +8,7 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 use Slim\Views\Twig; // Import the Twig namespace
 
-class mpdf/mpd implements MiddlewareInterface
+class MaintenanceModeMiddlewared implements MiddlewareInterface
 {
     private $maintenanceMode;
     protected Twig $twig; // Add a Twig instance variable
